@@ -55,17 +55,17 @@ go doc fmt Println
 ## 変数の宣言
 
 ```Go
-	var (
-		i    int     = 1
-		f64  float64 = 1.2
-		s    string  = "test"
-		t, f bool    = true, false
-	)
-	fmt.Println(i, f64, s, t, f)
+var (
+	i    int     = 1
+	f64  float64 = 1.2
+	s    string  = "test"
+	t, f bool    = true, false
+)
+fmt.Println(i, f64, s, t, f)
 
-	xi := 1
-	xf64 := 1.2
-	xs := "test"
-	xt, xf := true, false
-
+// 下記の書き方は関数内でしか使えない
+xi := 1
+xf64 := 1.2
+xs := "test"
+xt, xf := true, false
 ```
