@@ -9,16 +9,10 @@ import (
 func convDecToBin(val int) []int {
 	var result []int
 	num := val
-	for {
-		quotient := num / 2
+	for num > 0 {
 		mod := num % 2
 		result = append([]int{mod}, result[0:]...)
-
-		num = quotient
-		if quotient == 0 || quotient == 1 {
-			result = append([]int{quotient}, result[0:]...)
-			break
-		}
+		num = num / 2
 	}
 	return result
 }
@@ -32,9 +26,8 @@ func convBinToDec(val []int) int {
 	return sum
 }
 
-
 func main() {
-	res := convDecToBin(100)
+	res := convDecToBin(101)
 	fmt.Printf("%d\n",res)
 
 	res2 := convBinToDec(res)
