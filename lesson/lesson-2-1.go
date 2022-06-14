@@ -1,12 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"math"
 )
 
 // Convert Decimal to Binary
-func convDecToBin(val int) []int {
+func ConvDecToBin(val int) []int {
 	var result []int
 	num := val
 	for num > 0 {
@@ -18,18 +17,10 @@ func convDecToBin(val int) []int {
 }
 
 // Convert Binary to Decimal
-func convBinToDec(val []int) int {
+func ConvBinToDec(val []int) int {
 	var sum int
 	for i := 0; i < len(val) -1; i++ {
 		sum += int(math.Pow(2,float64(len(val) - 1 - i)) * float64(val[i]))
 	}
 	return sum
-}
-
-func main() {
-	res := convDecToBin(101)
-	fmt.Printf("%d\n",res)
-
-	res2 := convBinToDec(res)
-	fmt.Printf("%d\n",res2)
 }
