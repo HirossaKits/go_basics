@@ -6,14 +6,17 @@ import (
 
 func main() {
 	res1 := ConvDecToBin(101)
-	fmt.Printf("%d\n",res1)
+	fmt.Printf("%d\n", res1)
 
 	res2 := ConvBinToDec(res1)
-	fmt.Printf("%d\n",res2)
+	fmt.Printf("%d\n", res2)
 
-	res3 := CalcAnd(13,14)
+	res3 := ConvBinToDec(CalcBin(13, 14, And))
 	fmt.Println(res3)
 
-	res4 := ConvBinToDec(res3)
+	res4 := ConvBinToDec(CalcBin(13, 14, Or))
 	fmt.Println(res4)
+
+	res5 := ConvBinToDec(CalcBin(13, 14, Xor))
+	fmt.Println(res5)
 }

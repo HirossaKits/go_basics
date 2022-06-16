@@ -19,8 +19,8 @@ func ConvDecToBin(val int) []int {
 // Convert Binary to Decimal
 func ConvBinToDec(val []int) int {
 	var sum int
-	for i := 0; i < len(val) -1; i++ {
-		sum += int(math.Pow(2,float64(len(val) - 1 - i)) * float64(val[i]))
+	for i := 0; i < len(val); i++ {
+		sum += int(math.Pow(2, float64(len(val)-1-i)) * float64(val[i]))
 	}
 	return sum
 }

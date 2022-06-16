@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func CalcAnd(val1 int, val2 int) []int {
+func CalcBin(val1 int, val2 int, fn func(int, int) (int, error)) []int {
 	val1Bin, val2Bin := ConvDecToBin(val1), ConvDecToBin(val2)
 	val1Len, val2Len := len(val1Bin), len(val2Bin)
 
@@ -19,7 +19,8 @@ func CalcAnd(val1 int, val2 int) []int {
 
 	var result []int
 
-	for i := 0; i < maxLen-1; i++ {
+	for i := 0; i < maxLen; i++ {
+
 		trgIdx := maxLen - i
 
 		var (
@@ -29,35 +30,67 @@ func CalcAnd(val1 int, val2 int) []int {
 
 		_, _ = eval1, eval2
 
-		if trgIdx >= val1Len {
+		if trgIdx > val1Len {
 			eval1 = 0
-		}else{
-			eval1 = val1Bin[trgIdx]
+		} else {
+			eval1 = val1Bin[i+val1Len-maxLen]
 		}
 
-		if trgIdx >= val2Len {
+		if trgIdx > val2Len {
 			eval2 = 0
-		}else{
-			eval2 = val1Bin[trgIdx]
+		} else {
+			eval2 = val2Bin[i+val2Len-maxLen]
 		}
 
-		part,err := and(eval1,eval2)
-		if err != nil{
-			fmt.Printf("%s\n",err)
+		part, err := fn(eval1, eval2)
+		if err != nil {
+			fmt.Printf("%s\n", err)
 		}
 		result = append(result, part)
 	}
 	return result
 }
 
-func and(val1 int, val2 int) (int, error) {
+func And(val1 int, val2 int) (int, error) {
 	if val1 != 0 && val1 != 1 && val2 != 0 && val2 != 1 {
 		return -1, errors.New("value must be 0 or 1")
 	} else {
 		if val1 == 1 && val2 == 1 {
-			return 1,nil
+			return 1, nil
 		} else {
-			return 0,nil
+			return 0, nil
 		}
 	}
+}
+
+func Or(val1 int, val2 int) (int, error) {
+	if val1 != 0 && val1 != 1 && val2 != 0 && val2 != 1 {
+		return -1, errors.New("value must be 0 or 1")
+	} else {
+		if val1 == 1 || val2 == 1 {
+			return 1, nil
+		} else {
+			return 0, nil
+		}
+	}
+}
+
+func Xor(val1 int, val2 int) (int, error) {
+	if val1 != 0 && val1 != 1 && val2 != 0 && val2 != 1 {
+		return -1, errors.New("value must be 0 or 1")
+	} else {
+		if (val1 == 1 && val2 == 0) || (val1 == 0 && val2 == 1) {
+			return 1, nil
+		} else {
+			return 0, nil
+		}
+	}
+}
+
+func Mod100(els []int) int {
+	sum := 0
+	for _, el := range els {
+		sum += el
+	}
+	return sum % 100
 }
