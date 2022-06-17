@@ -19,4 +19,13 @@ func main() {
 
 	res5 := ConvBinToDec(CalcBin(13, 14, Xor))
 	fmt.Println(res5)
+
+	res6, err := CountDivisor(15, 3, 5)
+	if err == nil {
+		fmt.Println(res6)
+	}
+
+	res7 := CountLessThan(3, 4)
+	fmt.Println(res7)
+
 }
