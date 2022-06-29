@@ -25,7 +25,7 @@ func main() {
 		fmt.Println(res6)
 	}
 
-	res7 := CountLessThan(3, 4)
+	res7 := CountSumLessThan(3, 4)
 	fmt.Println(res7)
 
 }

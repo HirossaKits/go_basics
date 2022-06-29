@@ -85,11 +85,11 @@ func CommandlineArgs() {
 // }
 
 // ⭕ IDIOMATIC
-func Read(b *Buffer, p []byte) (n int, err error) {
-	if b.empty() {
-		b.Reset()
-	}
-	n = copy(p, b.buf[b.off:])
-	b.off += n
-	return n, nil
-}
+// func Read(b *Buffer, p []byte) (n int, err error) {
+// 	if b.empty() {
+// 		b.Reset()
+// 	}
+// 	n = copy(p, b.buf[b.off:])
+// 	b.off += n
+// 	return n, nil
+// }
